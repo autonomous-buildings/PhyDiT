@@ -1,4 +1,8 @@
 <html>
+<head>
+    <title>PhyDiT</title>
+</head>
+<body>
 
 <h1>Creating and Using Physics-infused Digital Twins for Automated Matching of Control Programs</h1>
 
@@ -17,7 +21,7 @@
 
 <h2>How would this work?</h2>
 
-<p>We first consider two personas. First, the <b>control program designer</b> who studies how technical systems of a given kind (say, boilers) work and based on a generalized understanding develops a program that can be used for systems that conform to the abstract idea of the technical system. And then we have the <b>technical system designer</b> who designs the actual systems and products (while having an idea about how it can be potentially controlled). For the purpose of allowing the technical system to be externally controlled, the designer provides sensors and actuators as interfaces that can be used by a control program.</p>
+<p>We have three personas involved. First, the <b>control program designer</b> who studies how technical systems of a given kind (say, boilers) work and based on a generalized understanding develops a program that can be used for systems that conform to the abstract idea of the technical system. And then we have the <b>technical system designer</b> who designs the actual systems and products (while having an idea about how it can be potentially controlled). For the purpose of allowing the technical system to be externally controlled, the designer provides sensors and actuators as interfaces that can be used by a control program.</p>
 
 <p>Traditionally, these two designers document their design, which the <b>automation engineer</b> reads and understands (before deciding that a program is suitable for the system at hand).</p>
 
@@ -34,7 +38,7 @@
 <img src="images/workflow.png"/>
 
 <h2><a id="ontology">The PhyDiT Ontology</a></h2>
-<p>The ontology can be downloaded here and the documentation is avaialable here.</p>
+<p>The ontology can be downloaded <a href="https://github.com/autonomous-buildings/PhyDiT">here</a> and an HTML documentation is avaialable <a href="http://www.w3id.org/phydit">here</a>. </p>
 <p>The schematic below attempts to explain the ontology visually: there are three distinct aspects - the control program, the technical system, and the model of the physical process. The heart of PhyDiT lies in the relationships that integrate these three aspects.</p>
 <img src="images/overview.png"/>
 
@@ -42,8 +46,10 @@
 <p>We will resort to an informal narrative in the form of user story to explain how our approach can be practically applied. We take the example of an oil-fired combustion boiler for hot water production which is quite often found in buildings of all sizes and purposes.</p>
 
 <h3>Bayo: The Technical System Designer</h3>
-<p>Bayo has designed a large 500kW oil-fired boiler (model number HW500), intances of which will be deployed in buildings all over the world. Apart from documenting the design using diagrams and texts, she has semantically described the construction of the boiler using the BRICK ontology (you can find it here) -- the figure below shows the essentials of this description:
-
+<p>Bayo has designed a large 500kW oil-fired boiler (model number HW500), intances of which will be deployed in buildings all over the world. Apart from documenting the design using diagrams and texts, she has semantically described the construction of the boiler using the <a href="https://brickschema.org/">BRICK</a> ontology (you can find the RDF description of the boiler <a href="https://raw.githubusercontent.com/autonomous-buildings/PhyDiT/main/examples/boiler/boiler-system-model.ttl">here</a>) -- the figure below shows the essentials of this description:
+<br><br>
+<img src="images/boiler-system.png"/>
+<br><br>
 But we are missing knowledge about the physical process. Even though we (as human experts) know that an instance of brick:Burner means that combustion of fuel is occuring in it, we need to express this in a machine-understandable manner (so that software programs can use the knowledge for logical reasoning). Therefore, Bayo, following our approach describes the physical process using the OntoCAPE ontology. You can find it here and the following figure summarizes the model:
 
 Finally, she links the two descriptions by telling which sensors observe which variable, and which actuator manipulates and affects which variable. The linked description is here and the following figure explains it visually:
@@ -104,5 +110,5 @@ A boiler of model HW500 has been installed in the building and made ready for co
 </pre>
 
 She then copies the Thing Description to an engineering tool called the Control Program Finder, which, in principle uses the semantic rules for matching (available here as SPARQL queries) to find the right control program from the Web repostitory. Aurelia then downloads this program to the automation controller which then binds its IOs to endpoints for sensors and actuators that are described in the Thing Description. Aurelia now has an hour to spare and calls up Bayo to tell how easy it was.
-
+</body>
 </html>
